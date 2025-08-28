@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BakerCommerce.Model
 {
-    internal class Usuario
+    public class Usuario
     {
         public int Id { get; set; }
         public string NameCompleto { get; set; }
@@ -33,9 +33,12 @@ namespace BakerCommerce.Model
             MySqlConnection con = conexaoBD.ObterConexao();
             MySqlCommand cmd = new MySqlCommand(comando, con);
 
+            // obter o hash da Senha:
+            string senhahash = EasyEncryption.SHA.ComputeSHA1Hash(Senha);
+
             // Substituir os caracteres coringas(@)
             cmd.Parameters.AddWithValue("@email", Email);
-            cmd.Parameters.AddWithValue("@senha", Senha); // Ainda falta obter o hash
+            cmd.Parameters.AddWithValue("@senha", senhahash); // Ainda falta obter o hash
 
 
             cmd.Prepare();

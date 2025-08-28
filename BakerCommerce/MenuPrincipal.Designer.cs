@@ -69,6 +69,7 @@
             this.btnComandas.TabIndex = 2;
             this.btnComandas.Text = "Comandas";
             this.btnComandas.UseVisualStyleBackColor = true;
+            this.btnComandas.Click += new System.EventHandler(this.btnComandas_Click);
             // 
             // btnProdutos
             // 
@@ -106,7 +107,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::BakerCommerce.Properties.Resources.pão;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 129);
+            this.pictureBox1.Location = new System.Drawing.Point(30, 129);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(251, 259);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
