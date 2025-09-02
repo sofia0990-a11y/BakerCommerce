@@ -27,5 +27,11 @@ namespace BakerCommerce
         {
 
         }
+
+        private void btnUsuario_Click(object sender, EventArgs e)
+        {
+            FormUsuario formUsuario = new FormUsuario(Usuario);
+            formUsuario.ShowDialog(); // Mostrar o form
+        }
     }
 }

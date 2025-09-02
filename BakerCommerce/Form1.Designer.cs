@@ -40,7 +40,7 @@
             // 
             this.lblEmail.AutoSize = true;
             this.lblEmail.BackColor = System.Drawing.Color.White;
-            this.lblEmail.Location = new System.Drawing.Point(158, 127);
+            this.lblEmail.Location = new System.Drawing.Point(189, 120);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(35, 13);
             this.lblEmail.TabIndex = 0;
@@ -50,7 +50,7 @@
             // 
             this.lblSenha.AutoSize = true;
             this.lblSenha.BackColor = System.Drawing.Color.White;
-            this.lblSenha.Location = new System.Drawing.Point(152, 155);
+            this.lblSenha.Location = new System.Drawing.Point(183, 155);
             this.lblSenha.Name = "lblSenha";
             this.lblSenha.Size = new System.Drawing.Size(41, 13);
             this.lblSenha.TabIndex = 2;
@@ -58,14 +58,14 @@
             // 
             // txbEmail
             // 
-            this.txbEmail.Location = new System.Drawing.Point(199, 124);
+            this.txbEmail.Location = new System.Drawing.Point(230, 117);
             this.txbEmail.Name = "txbEmail";
             this.txbEmail.Size = new System.Drawing.Size(100, 20);
             this.txbEmail.TabIndex = 3;
             // 
             // txbsenha
             // 
-            this.txbsenha.Location = new System.Drawing.Point(199, 155);
+            this.txbsenha.Location = new System.Drawing.Point(230, 148);
             this.txbsenha.Name = "txbsenha";
             this.txbsenha.PasswordChar = '♥';
             this.txbsenha.Size = new System.Drawing.Size(100, 20);
@@ -75,7 +75,7 @@
             // 
             this.btnEntrar.BackColor = System.Drawing.Color.White;
             this.btnEntrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEntrar.Location = new System.Drawing.Point(137, 191);
+            this.btnEntrar.Location = new System.Drawing.Point(163, 185);
             this.btnEntrar.Name = "btnEntrar";
             this.btnEntrar.Size = new System.Drawing.Size(206, 49);
             this.btnEntrar.TabIndex = 5;
@@ -89,7 +89,7 @@
             this.label1.BackColor = System.Drawing.Color.White;
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label1.Font = new System.Drawing.Font("Lucida Handwriting", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(44, 51);
+            this.label1.Location = new System.Drawing.Point(70, 46);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(417, 41);
             this.label1.TabIndex = 6;

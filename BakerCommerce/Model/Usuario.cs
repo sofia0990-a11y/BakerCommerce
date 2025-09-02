@@ -14,6 +14,8 @@ namespace BakerCommerce.Model
         public string NameCompleto { get; set; }
         public string Email { get; set; }
         public string Senha { get; set; }
+        public string Nome { get; internal set; }
+        public object Nome_completo { get; private set; }
 
         /*Cadastrar
         * Logar
@@ -48,6 +50,60 @@ namespace BakerCommerce.Model
             tabela.Load(cmd.ExecuteReader());
             conexaoBD.Desconectar(con);
             return tabela;
+
         }
+
+            public DataTable Listar()
+        {
+            string comando = "SELECT id, nome_completo, email FROM  usuarios";
+            Banco conexaoBD = new Banco();
+            MySqlConnection con = conexaoBD.ObterConexao();
+            MySqlCommand cmd = new MySqlCommand(comando, con);
+            cmd.Prepare();
+            DataTable tabela = new DataTable();
+            tabela.Load(cmd.ExecuteReader());
+            conexaoBD.Desconectar(con);
+            return tabela;
+
+        }
+            public bool Cadastrar()
+        {
+            string comando = "INSERT INTO usuarios (nome_completo, email, senha) VALUES" +
+               "(@nome_completo , @email, @senha)";
+            Banco conexaoBD = new Banco();
+            MySqlConnection con = conexaoBD.ObterConexao();
+            MySqlCommand cmd = new MySqlCommand(comando, con);
+
+            cmd.Parameters.AddWithValue("@nome_completo", Nome_completo);
+            cmd.Parameters.AddWithValue("@email", Email);
+            // obter o hash da senha:
+            string hassenha = EasyEncryption.SHA.ComputeSHA256Hash(Senha);
+            cmd.Parameters.AddWithValue()
+            // Obs.: Certifique-se de utilizar alguma método para obter o hash da senha antes de cadastrar!
+            cmd.Prepare();
+            // O trecho abaixo irá retornar true caso o cadastro dê certo:
+            // Em caso de erro, experimente comentar o try/catch e executar novamente o código;
+            // Grande parte dos problemas estão associados à um comando SQL incorreto. Verifique a string comando.
+            try
+            {
+                if (cmd.ExecuteNonQuery() == 0)
+                {
+                    conexaoBD.Desconectar(con);
+                    return false;
+                }
+                else
+                {
+                    conexaoBD.Desconectar(con);
+                    return true;
+                }
+            }
+            catch
+            {
+                conexaoBD.Desconectar(con);
+                return false;
+            }
+        }
+
+        
     }
 }
