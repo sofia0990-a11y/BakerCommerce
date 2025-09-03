@@ -30,24 +30,24 @@
         {
             this.dgvUsuarios = new System.Windows.Forms.DataGridView();
             this.grbCadastro = new System.Windows.Forms.GroupBox();
-            this.lblnNome = new System.Windows.Forms.Label();
-            this.lblEmail = new System.Windows.Forms.Label();
-            this.lblSenha = new System.Windows.Forms.Label();
-            this.txbNome = new System.Windows.Forms.TextBox();
-            this.txbEmail = new System.Windows.Forms.TextBox();
+            this.btnCadastrar = new System.Windows.Forms.Button();
             this.txbSenha = new System.Windows.Forms.TextBox();
+            this.txbEmail = new System.Windows.Forms.TextBox();
+            this.txbNome = new System.Windows.Forms.TextBox();
+            this.lblSenha = new System.Windows.Forms.Label();
+            this.lblEmail = new System.Windows.Forms.Label();
+            this.lblnNome = new System.Windows.Forms.Label();
             this.grbEditar = new System.Windows.Forms.GroupBox();
+            this.btnEditar = new System.Windows.Forms.Button();
             this.txbSenhaEditar = new System.Windows.Forms.TextBox();
             this.txbEmailEditar = new System.Windows.Forms.TextBox();
             this.txbNomeEditar = new System.Windows.Forms.TextBox();
             this.lblSenhaEditar = new System.Windows.Forms.Label();
             this.lblEmailEditar = new System.Windows.Forms.Label();
             this.lblNomeEditar = new System.Windows.Forms.Label();
-            this.btnCadastrar = new System.Windows.Forms.Button();
-            this.btnEditar = new System.Windows.Forms.Button();
             this.grbApagar = new System.Windows.Forms.GroupBox();
-            this.lblDescricao = new System.Windows.Forms.Label();
             this.btnApagar = new System.Windows.Forms.Button();
+            this.lblDescricao = new System.Windows.Forms.Label();
             this.lblUsuario = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
@@ -71,6 +71,7 @@
             this.dgvUsuarios.ReadOnly = true;
             this.dgvUsuarios.Size = new System.Drawing.Size(619, 269);
             this.dgvUsuarios.TabIndex = 0;
+            this.dgvUsuarios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsuarios_CellClick);
             // 
             // grbCadastro
             // 
@@ -89,23 +90,36 @@
             this.grbCadastro.TabStop = false;
             this.grbCadastro.Text = "Cadastro";
             // 
-            // lblnNome
+            // btnCadastrar
             // 
-            this.lblnNome.AutoSize = true;
-            this.lblnNome.Location = new System.Drawing.Point(17, 23);
-            this.lblnNome.Name = "lblnNome";
-            this.lblnNome.Size = new System.Drawing.Size(85, 13);
-            this.lblnNome.TabIndex = 0;
-            this.lblnNome.Text = "Nome Completo:";
+            this.btnCadastrar.Location = new System.Drawing.Point(33, 101);
+            this.btnCadastrar.Name = "btnCadastrar";
+            this.btnCadastrar.Size = new System.Drawing.Size(210, 37);
+            this.btnCadastrar.TabIndex = 6;
+            this.btnCadastrar.Text = "Cadastrar";
+            this.btnCadastrar.UseVisualStyleBackColor = true;
+            this.btnCadastrar.Click += new System.EventHandler(this.btnCadastrar_Click);
             // 
-            // lblEmail
+            // txbSenha
             // 
-            this.lblEmail.AutoSize = true;
-            this.lblEmail.Location = new System.Drawing.Point(67, 46);
-            this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(35, 13);
-            this.lblEmail.TabIndex = 1;
-            this.lblEmail.Text = "Email:";
+            this.txbSenha.Location = new System.Drawing.Point(108, 75);
+            this.txbSenha.Name = "txbSenha";
+            this.txbSenha.Size = new System.Drawing.Size(113, 20);
+            this.txbSenha.TabIndex = 5;
+            // 
+            // txbEmail
+            // 
+            this.txbEmail.Location = new System.Drawing.Point(108, 43);
+            this.txbEmail.Name = "txbEmail";
+            this.txbEmail.Size = new System.Drawing.Size(113, 20);
+            this.txbEmail.TabIndex = 4;
+            // 
+            // txbNome
+            // 
+            this.txbNome.Location = new System.Drawing.Point(108, 20);
+            this.txbNome.Name = "txbNome";
+            this.txbNome.Size = new System.Drawing.Size(113, 20);
+            this.txbNome.TabIndex = 3;
             // 
             // lblSenha
             // 
@@ -116,26 +130,23 @@
             this.lblSenha.TabIndex = 2;
             this.lblSenha.Text = "Senha:";
             // 
-            // txbNome
+            // lblEmail
             // 
-            this.txbNome.Location = new System.Drawing.Point(108, 20);
-            this.txbNome.Name = "txbNome";
-            this.txbNome.Size = new System.Drawing.Size(113, 20);
-            this.txbNome.TabIndex = 3;
+            this.lblEmail.AutoSize = true;
+            this.lblEmail.Location = new System.Drawing.Point(67, 46);
+            this.lblEmail.Name = "lblEmail";
+            this.lblEmail.Size = new System.Drawing.Size(35, 13);
+            this.lblEmail.TabIndex = 1;
+            this.lblEmail.Text = "Email:";
             // 
-            // txbEmail
+            // lblnNome
             // 
-            this.txbEmail.Location = new System.Drawing.Point(108, 43);
-            this.txbEmail.Name = "txbEmail";
-            this.txbEmail.Size = new System.Drawing.Size(113, 20);
-            this.txbEmail.TabIndex = 4;
-            // 
-            // txbSenha
-            // 
-            this.txbSenha.Location = new System.Drawing.Point(108, 75);
-            this.txbSenha.Name = "txbSenha";
-            this.txbSenha.Size = new System.Drawing.Size(113, 20);
-            this.txbSenha.TabIndex = 5;
+            this.lblnNome.AutoSize = true;
+            this.lblnNome.Location = new System.Drawing.Point(17, 23);
+            this.lblnNome.Name = "lblnNome";
+            this.lblnNome.Size = new System.Drawing.Size(85, 13);
+            this.lblnNome.TabIndex = 0;
+            this.lblnNome.Text = "Nome Completo:";
             // 
             // grbEditar
             // 
@@ -153,6 +164,16 @@
             this.grbEditar.TabIndex = 2;
             this.grbEditar.TabStop = false;
             this.grbEditar.Text = "Editar";
+            // 
+            // btnEditar
+            // 
+            this.btnEditar.Location = new System.Drawing.Point(33, 101);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(210, 37);
+            this.btnEditar.TabIndex = 7;
+            this.btnEditar.Text = "Editar";
+            this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // txbSenhaEditar
             // 
@@ -202,25 +223,6 @@
             this.lblNomeEditar.TabIndex = 0;
             this.lblNomeEditar.Text = "Nome Completo:";
             // 
-            // btnCadastrar
-            // 
-            this.btnCadastrar.Location = new System.Drawing.Point(33, 101);
-            this.btnCadastrar.Name = "btnCadastrar";
-            this.btnCadastrar.Size = new System.Drawing.Size(210, 37);
-            this.btnCadastrar.TabIndex = 6;
-            this.btnCadastrar.Text = "Cadastrar";
-            this.btnCadastrar.UseVisualStyleBackColor = true;
-            this.btnCadastrar.Click += new System.EventHandler(this.btnCadastrar_Click);
-            // 
-            // btnEditar
-            // 
-            this.btnEditar.Location = new System.Drawing.Point(33, 101);
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(210, 37);
-            this.btnEditar.TabIndex = 7;
-            this.btnEditar.Text = "Editar";
-            this.btnEditar.UseVisualStyleBackColor = true;
-            // 
             // grbApagar
             // 
             this.grbApagar.Controls.Add(this.btnApagar);
@@ -233,16 +235,6 @@
             this.grbApagar.TabStop = false;
             this.grbApagar.Text = "Apagar";
             // 
-            // lblDescricao
-            // 
-            this.lblDescricao.AutoSize = true;
-            this.lblDescricao.Font = new System.Drawing.Font("Lucida Fax", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDescricao.Location = new System.Drawing.Point(6, 31);
-            this.lblDescricao.Name = "lblDescricao";
-            this.lblDescricao.Size = new System.Drawing.Size(350, 22);
-            this.lblDescricao.TabIndex = 0;
-            this.lblDescricao.Text = "Selecionar um Usuário para Apagar";
-            // 
             // btnApagar
             // 
             this.btnApagar.BackColor = System.Drawing.Color.White;
@@ -254,6 +246,17 @@
             this.btnApagar.TabIndex = 1;
             this.btnApagar.Text = "Apagar";
             this.btnApagar.UseVisualStyleBackColor = false;
+            this.btnApagar.Click += new System.EventHandler(this.btnApagar_Click);
+            // 
+            // lblDescricao
+            // 
+            this.lblDescricao.AutoSize = true;
+            this.lblDescricao.Font = new System.Drawing.Font("Lucida Fax", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDescricao.Location = new System.Drawing.Point(6, 31);
+            this.lblDescricao.Name = "lblDescricao";
+            this.lblDescricao.Size = new System.Drawing.Size(350, 22);
+            this.lblDescricao.TabIndex = 0;
+            this.lblDescricao.Text = "Selecionar um Usuário para Apagar";
             // 
             // lblUsuario
             // 
@@ -268,7 +271,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::BakerCommerce.Properties.Resources.sla;
-            this.pictureBox1.Location = new System.Drawing.Point(575, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(563, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(75, 41);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;

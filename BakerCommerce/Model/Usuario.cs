@@ -10,6 +10,8 @@ namespace BakerCommerce.Model
 {
     public class Usuario
     {
+        private object senhahash;
+
         public int Id { get; set; }
         public string NameCompleto { get; set; }
         public string Email { get; set; }
@@ -78,7 +80,7 @@ namespace BakerCommerce.Model
             cmd.Parameters.AddWithValue("@email", Email);
             // obter o hash da senha:
             string hassenha = EasyEncryption.SHA.ComputeSHA256Hash(Senha);
-            cmd.Parameters.AddWithValue()
+            cmd.Parameters.AddWithValue("@senha", senhahash);
             // Obs.: Certifique-se de utilizar alguma método para obter o hash da senha antes de cadastrar!
             cmd.Prepare();
             // O trecho abaixo irá retornar true caso o cadastro dê certo:
@@ -103,7 +105,117 @@ namespace BakerCommerce.Model
                 return false;
             }
         }
+             
+            
+       public  bool Apagar()
+        {
+            string comando = "DELETE FROM usuarios WHERE id = @id";
 
-        
+            Banco conexaoBD = new Banco();
+
+            MySqlConnection con = conexaoBD.ObterConexao();
+
+            MySqlCommand cmd = new MySqlCommand(comando, con);
+
+            cmd.Parameters.AddWithValue("@id", Id );
+
+            cmd.Prepare();
+
+            try
+
+            {
+
+                if (cmd.ExecuteNonQuery() == 0)
+
+                {
+
+                    conexaoBD.Desconectar(con);
+
+                    return false;
+
+                }
+
+                else
+
+                {
+
+                    conexaoBD.Desconectar(con);
+
+                    return true;
+
+                }
+
+            }
+
+            catch
+
+            {
+
+                conexaoBD.Desconectar(con);
+
+                return false;
+
+            }
+
+        }
+
+        public bool Modificar()
+        {
+            string comando = "UPDATE usuario SET  nome_completo= @nome_completo, " +
+            "email = @email, senha =@senha WHERE id =@id";
+
+            Banco conexaoBD = new Banco();
+
+            MySqlConnection con = conexaoBD.ObterConexao();
+
+            MySqlCommand cmd = new MySqlCommand(comando, con);
+
+            cmd.Parameters.AddWithValue("@nome_completo", Nome_completo);
+            cmd.Parameters.AddWithValue("@email", Email);
+            cmd.Parameters.AddWithValue("@senha", Senha);
+            cmd.Parameters.AddWithValue("@id", Id);
+            cmd.Prepare();
+
+             string hashSenha = EasyEncryption.SHA.ComputeSHA256Hash(Senha);
+            cmd.Parameters.AddWithValue("senha", hashSenha);
+            cmd.Parameters.AddWithValue("id", hashSenha);
+
+            try
+
+            {
+
+                if (cmd.ExecuteNonQuery() == 0)
+
+                {
+
+                    conexaoBD.Desconectar(con);
+
+                    return false;
+
+                }
+
+                else
+
+                {
+
+                    conexaoBD.Desconectar(con);
+
+                    return true;
+
+                }
+
+            }
+
+            catch
+
+            {
+
+                conexaoBD.Desconectar(con);
+
+                return false;
+
+            }
+        }
+
     }
 }
