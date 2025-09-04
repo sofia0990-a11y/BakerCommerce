@@ -117,6 +117,7 @@ namespace BakerCommerce
         private void btnApagar_Click(object sender, EventArgs e)
         {
             // Perguntar se realmente quer apagar:
+
             DialogResult r = MessageBox.Show(" Tem certeza que deseja apagar esse Usuário?",
                 "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (r == DialogResult.Yes)
@@ -142,20 +143,25 @@ namespace BakerCommerce
          public void ResetarCampos()
         {
             // Atuslizar o dgv:
+
             AtualizarDgv();
 
             // Limpar campos de edição
+
             txbNomeEditar.Clear();
             txbEmailEditar.Clear();
             txbSenhaEditar.Clear();
 
             // Retornar o idSelecionado para 0
+
             idSelecionado = 0;
 
             // Retornar o texto padrão do "Apagar"
+
             lblDescricao.Text = "Selecione o usuário que deseja apagar";
 
             // Desabilitar o grb
+
             grbApagar.Enabled = false;
             grbEditar.Enabled = false;
         }
@@ -164,6 +170,7 @@ namespace BakerCommerce
         {
 
             // Validar campos:
+
             if (txbNome.Text.Length < 5)
             {
                 MessageBox.Show("O nome deve ter no minimo 5 caractere.",
@@ -182,6 +189,7 @@ namespace BakerCommerce
             else
             {
                 //Prosseguir a edição
+
                 Model.Usuario usuarioEditar = new Model.Usuario();
                 usuarioEditar.Id = idSelecionado;
                 usuarioEditar.Nome =txbNomeEditar.Text;

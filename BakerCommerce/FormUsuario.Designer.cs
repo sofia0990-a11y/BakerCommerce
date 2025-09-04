@@ -262,7 +262,7 @@
             // 
             this.lblUsuario.AutoSize = true;
             this.lblUsuario.Font = new System.Drawing.Font("Lucida Handwriting", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsuario.Location = new System.Drawing.Point(163, 17);
+            this.lblUsuario.Location = new System.Drawing.Point(174, 12);
             this.lblUsuario.Name = "lblUsuario";
             this.lblUsuario.Size = new System.Drawing.Size(382, 36);
             this.lblUsuario.TabIndex = 4;
@@ -271,7 +271,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::BakerCommerce.Properties.Resources.sla;
-            this.pictureBox1.Location = new System.Drawing.Point(563, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(562, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(75, 41);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
