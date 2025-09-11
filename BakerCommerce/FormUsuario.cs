@@ -31,6 +31,7 @@ namespace BakerCommerce
         {   
             // Mostrar as informações 
             dgvUsuarios.DataSource = usuario.Listar();
+            
         }
         
          
@@ -61,7 +62,7 @@ namespace BakerCommerce
                 Model.Usuario usuarioCadastro = new Model.Usuario();
                 // Salvar os Valores dos campos nos atributos do obj:
 
-                usuarioCadastro.Nome = txbNome.Text;
+                usuarioCadastro.NomeCompleto = txbNome.Text;
                 usuarioCadastro.Email = txbEmail.Text;
                 usuarioCadastro.Senha = txbSenha.Text;
 
@@ -192,7 +193,7 @@ namespace BakerCommerce
 
                 Model.Usuario usuarioEditar = new Model.Usuario();
                 usuarioEditar.Id = idSelecionado;
-                usuarioEditar.Nome =txbNomeEditar.Text;
+                usuarioEditar.NomeCompleto =txbNomeEditar.Text;
                 usuarioEditar.Email = txbEmailEditar.Text;
                 usuarioEditar.Senha = txbSenhaEditar.Text;
 

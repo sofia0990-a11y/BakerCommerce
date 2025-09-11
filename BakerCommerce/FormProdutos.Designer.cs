@@ -30,13 +30,13 @@
         {
             this.dgvProdutos = new System.Windows.Forms.DataGridView();
             this.grbCadastrar = new System.Windows.Forms.GroupBox();
-            this.lblNomeCadastro = new System.Windows.Forms.Label();
-            this.txbNomeCadastro = new System.Windows.Forms.TextBox();
-            this.lblPreco = new System.Windows.Forms.Label();
-            this.txbPrecoCadastrar = new System.Windows.Forms.TextBox();
-            this.lblCategoriaCadastro = new System.Windows.Forms.Label();
-            this.cmbCategoriaCadastrar = new System.Windows.Forms.ComboBox();
             this.btnCadastrar = new System.Windows.Forms.Button();
+            this.cmbCategoriaCadastrar = new System.Windows.Forms.ComboBox();
+            this.lblCategoriaCadastro = new System.Windows.Forms.Label();
+            this.txbPrecoCadastrar = new System.Windows.Forms.TextBox();
+            this.lblPreco = new System.Windows.Forms.Label();
+            this.txbNomeCadastro = new System.Windows.Forms.TextBox();
+            this.lblNomeCadastro = new System.Windows.Forms.Label();
             this.grbEditar = new System.Windows.Forms.GroupBox();
             this.btnCadastrarEditar = new System.Windows.Forms.Button();
             this.cmdCategoriaEditar = new System.Windows.Forms.ComboBox();
@@ -46,8 +46,8 @@
             this.txbNomeEditar = new System.Windows.Forms.TextBox();
             this.lblNomeEditar = new System.Windows.Forms.Label();
             this.grbApagar = new System.Windows.Forms.GroupBox();
-            this.lblDescriçãoApagar = new System.Windows.Forms.Label();
             this.btnApagar = new System.Windows.Forms.Button();
+            this.lblDescriçãoApagar = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutos)).BeginInit();
@@ -65,6 +65,7 @@
             this.dgvProdutos.Name = "dgvProdutos";
             this.dgvProdutos.Size = new System.Drawing.Size(568, 278);
             this.dgvProdutos.TabIndex = 0;
+            this.dgvProdutos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProdutos_CellContentClick);
             // 
             // grbCadastrar
             // 
@@ -82,46 +83,15 @@
             this.grbCadastrar.TabStop = false;
             this.grbCadastrar.Text = "Cadastrar";
             // 
-            // lblNomeCadastro
+            // btnCadastrar
             // 
-            this.lblNomeCadastro.AutoSize = true;
-            this.lblNomeCadastro.Location = new System.Drawing.Point(33, 20);
-            this.lblNomeCadastro.Name = "lblNomeCadastro";
-            this.lblNomeCadastro.Size = new System.Drawing.Size(38, 13);
-            this.lblNomeCadastro.TabIndex = 0;
-            this.lblNomeCadastro.Text = "Nome:";
-            // 
-            // txbNomeCadastro
-            // 
-            this.txbNomeCadastro.Location = new System.Drawing.Point(87, 20);
-            this.txbNomeCadastro.Name = "txbNomeCadastro";
-            this.txbNomeCadastro.Size = new System.Drawing.Size(114, 20);
-            this.txbNomeCadastro.TabIndex = 1;
-            // 
-            // lblPreco
-            // 
-            this.lblPreco.AutoSize = true;
-            this.lblPreco.Location = new System.Drawing.Point(33, 47);
-            this.lblPreco.Name = "lblPreco";
-            this.lblPreco.Size = new System.Drawing.Size(37, 13);
-            this.lblPreco.TabIndex = 2;
-            this.lblPreco.Text = "preço:";
-            // 
-            // txbPrecoCadastrar
-            // 
-            this.txbPrecoCadastrar.Location = new System.Drawing.Point(87, 47);
-            this.txbPrecoCadastrar.Name = "txbPrecoCadastrar";
-            this.txbPrecoCadastrar.Size = new System.Drawing.Size(114, 20);
-            this.txbPrecoCadastrar.TabIndex = 3;
-            // 
-            // lblCategoriaCadastro
-            // 
-            this.lblCategoriaCadastro.AutoSize = true;
-            this.lblCategoriaCadastro.Location = new System.Drawing.Point(12, 71);
-            this.lblCategoriaCadastro.Name = "lblCategoriaCadastro";
-            this.lblCategoriaCadastro.Size = new System.Drawing.Size(63, 13);
-            this.lblCategoriaCadastro.TabIndex = 5;
-            this.lblCategoriaCadastro.Text = "Cadegorias:";
+            this.btnCadastrar.Location = new System.Drawing.Point(36, 106);
+            this.btnCadastrar.Name = "btnCadastrar";
+            this.btnCadastrar.Size = new System.Drawing.Size(191, 37);
+            this.btnCadastrar.TabIndex = 7;
+            this.btnCadastrar.Text = "Cadastrar";
+            this.btnCadastrar.UseVisualStyleBackColor = true;
+            this.btnCadastrar.Click += new System.EventHandler(this.btnCadastrar_Click);
             // 
             // cmbCategoriaCadastrar
             // 
@@ -132,14 +102,46 @@
             this.cmbCategoriaCadastrar.TabIndex = 6;
             this.cmbCategoriaCadastrar.SelectedIndexChanged += new System.EventHandler(this.cmbCategoriaCadastrar_SelectedIndexChanged);
             // 
-            // btnCadastrar
+            // lblCategoriaCadastro
             // 
-            this.btnCadastrar.Location = new System.Drawing.Point(36, 106);
-            this.btnCadastrar.Name = "btnCadastrar";
-            this.btnCadastrar.Size = new System.Drawing.Size(191, 37);
-            this.btnCadastrar.TabIndex = 7;
-            this.btnCadastrar.Text = "Cadastrar";
-            this.btnCadastrar.UseVisualStyleBackColor = true;
+            this.lblCategoriaCadastro.AutoSize = true;
+            this.lblCategoriaCadastro.Location = new System.Drawing.Point(12, 71);
+            this.lblCategoriaCadastro.Name = "lblCategoriaCadastro";
+            this.lblCategoriaCadastro.Size = new System.Drawing.Size(63, 13);
+            this.lblCategoriaCadastro.TabIndex = 5;
+            this.lblCategoriaCadastro.Text = "Cadegorias:";
+            // 
+            // txbPrecoCadastrar
+            // 
+            this.txbPrecoCadastrar.Location = new System.Drawing.Point(87, 47);
+            this.txbPrecoCadastrar.Name = "txbPrecoCadastrar";
+            this.txbPrecoCadastrar.Size = new System.Drawing.Size(114, 20);
+            this.txbPrecoCadastrar.TabIndex = 3;
+            // 
+            // lblPreco
+            // 
+            this.lblPreco.AutoSize = true;
+            this.lblPreco.Location = new System.Drawing.Point(33, 47);
+            this.lblPreco.Name = "lblPreco";
+            this.lblPreco.Size = new System.Drawing.Size(37, 13);
+            this.lblPreco.TabIndex = 2;
+            this.lblPreco.Text = "preço:";
+            // 
+            // txbNomeCadastro
+            // 
+            this.txbNomeCadastro.Location = new System.Drawing.Point(87, 20);
+            this.txbNomeCadastro.Name = "txbNomeCadastro";
+            this.txbNomeCadastro.Size = new System.Drawing.Size(114, 20);
+            this.txbNomeCadastro.TabIndex = 1;
+            // 
+            // lblNomeCadastro
+            // 
+            this.lblNomeCadastro.AutoSize = true;
+            this.lblNomeCadastro.Location = new System.Drawing.Point(33, 20);
+            this.lblNomeCadastro.Name = "lblNomeCadastro";
+            this.lblNomeCadastro.Size = new System.Drawing.Size(38, 13);
+            this.lblNomeCadastro.TabIndex = 0;
+            this.lblNomeCadastro.Text = "Nome:";
             // 
             // grbEditar
             // 
@@ -165,6 +167,7 @@
             this.btnCadastrarEditar.TabIndex = 7;
             this.btnCadastrarEditar.Text = "Cadastrar";
             this.btnCadastrarEditar.UseVisualStyleBackColor = true;
+            this.btnCadastrarEditar.Click += new System.EventHandler(this.btnCadastrarEditar_Click);
             // 
             // cmdCategoriaEditar
             // 
@@ -226,16 +229,6 @@
             this.grbApagar.TabStop = false;
             this.grbApagar.Text = "Apagar";
             // 
-            // lblDescriçãoApagar
-            // 
-            this.lblDescriçãoApagar.AutoSize = true;
-            this.lblDescriçãoApagar.Font = new System.Drawing.Font("Lucida Fax", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDescriçãoApagar.Location = new System.Drawing.Point(11, 29);
-            this.lblDescriçãoApagar.Name = "lblDescriçãoApagar";
-            this.lblDescriçãoApagar.Size = new System.Drawing.Size(351, 22);
-            this.lblDescriçãoApagar.TabIndex = 0;
-            this.lblDescriçãoApagar.Text = "Selecione um produto para apagar";
-            // 
             // btnApagar
             // 
             this.btnApagar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -246,6 +239,17 @@
             this.btnApagar.TabIndex = 1;
             this.btnApagar.Text = "Apagar";
             this.btnApagar.UseVisualStyleBackColor = true;
+            this.btnApagar.Click += new System.EventHandler(this.btnApagar_Click);
+            // 
+            // lblDescriçãoApagar
+            // 
+            this.lblDescriçãoApagar.AutoSize = true;
+            this.lblDescriçãoApagar.Font = new System.Drawing.Font("Lucida Fax", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDescriçãoApagar.Location = new System.Drawing.Point(11, 29);
+            this.lblDescriçãoApagar.Name = "lblDescriçãoApagar";
+            this.lblDescriçãoApagar.Size = new System.Drawing.Size(351, 22);
+            this.lblDescriçãoApagar.TabIndex = 0;
+            this.lblDescriçãoApagar.Text = "Selecione um produto para apagar";
             // 
             // lblTitulo
             // 

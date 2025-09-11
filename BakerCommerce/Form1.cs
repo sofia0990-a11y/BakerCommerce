@@ -37,7 +37,7 @@ namespace BakerCommerce
 
                 // Colocar os Valores dos campos nos atributos do usuario:
                 usuario.Email =txbEmail.Text;
-                usuario.Email = txbsenha.Text;
+                usuario.Senha = txbsenha.Text;
 
                 // Tabela que vai receber o resultado do SELECT (logar)
                 DataTable Resultado = usuario.Logar();
@@ -53,7 +53,7 @@ namespace BakerCommerce
                 {
                     // Armazenar as infos vindas do bd objeto "usuario"
                     usuario.Id = int.Parse(Resultado.Rows[0]["id"].ToString());
-                    usuario.NameCompleto = (Resultado.Rows[0]["nome_completo"].ToString());
+                    usuario.NomeCompleto = (Resultado.Rows[0]["nome_completo"].ToString());
 
                     // Mudar para o Menu Principal:
                      MenuPrincipal menuPrincipal = new MenuPrincipal(usuario);

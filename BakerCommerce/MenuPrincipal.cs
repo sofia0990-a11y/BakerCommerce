@@ -20,7 +20,7 @@ namespace BakerCommerce
         {
             InitializeComponent();
             this.Usuario = usuario;
-            lblDescricao.Text = $"olá {usuario.NameCompleto},\nEscolha uma opção abaixo:";
+            lblDescricao.Text = $"olá {usuario.NomeCompleto},\nEscolha uma opção abaixo:";
         }
 
         private void btnComandas_Click(object sender, EventArgs e)

@@ -1,23 +1,18 @@
 ﻿using MySqlConnector;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BakerCommerce.Model
 {
     public class Usuario
     {
-        private object senhahash;
+ 
 
         public int Id { get; set; }
-        public string NameCompleto { get; set; }
+        public string NomeCompleto { get; set; }
         public string Email { get; set; }
         public string Senha { get; set; }
-        public string Nome { get; internal set; }
-        public object Nome_completo { get; private set; }
+       
+      
 
         /*Cadastrar
         * Logar
@@ -28,7 +23,7 @@ namespace BakerCommerce.Model
         public DataTable Logar()
         {
 
-            string comando = "SELECT  * FROM usuario WHERE email = @email AND senha = senha";
+            string comando = "SELECT * FROM usuarios WHERE email = @email AND senha = @senha";
             /*
             Caso vá utilizar o WHERE, empregue o uso de caracteres coringas,
             semelhante ao apresentado no metódo Cadastrar() acima.
@@ -37,13 +32,12 @@ namespace BakerCommerce.Model
             MySqlConnection con = conexaoBD.ObterConexao();
             MySqlCommand cmd = new MySqlCommand(comando, con);
 
-            // obter o hash da Senha:
-            string senhahash = EasyEncryption.SHA.ComputeSHA1Hash(Senha);
+            // Obter o HASH da senha:
+            string senhahash = EasyEncryption.SHA.ComputeSHA256Hash(Senha);
 
-            // Substituir os caracteres coringas(@)
+            // Substituir os caracteres coringas (@)
             cmd.Parameters.AddWithValue("@email", Email);
-            cmd.Parameters.AddWithValue("@senha", senhahash); // Ainda falta obter o hash
-
+            cmd.Parameters.AddWithValue("@senha", senhahash); // Ainda falta fazer o HASH!
 
             cmd.Prepare();
             // Declarar tabela que irá receber o resultado:
@@ -52,35 +46,33 @@ namespace BakerCommerce.Model
             tabela.Load(cmd.ExecuteReader());
             conexaoBD.Desconectar(con);
             return tabela;
-
         }
 
-            public DataTable Listar()
+        public DataTable Listar()
         {
-            string comando = "SELECT id, nome_completo, email FROM  usuarios";
+            string comando = "SELECT id, nome_completo, email FROM usuarios";
             Banco conexaoBD = new Banco();
             MySqlConnection con = conexaoBD.ObterConexao();
             MySqlCommand cmd = new MySqlCommand(comando, con);
-            cmd.Prepare();
             DataTable tabela = new DataTable();
             tabela.Load(cmd.ExecuteReader());
             conexaoBD.Desconectar(con);
             return tabela;
-
         }
-            public bool Cadastrar()
+
+        public bool Cadastrar()
         {
-            string comando = "INSERT INTO usuarios (nome_completo, email, senha) VALUES" +
-               "(@nome_completo , @email, @senha)";
+            string comando = "INSERT INTO usuarios (nome_completo, email, senha) VALUES " +
+                "(@nome_completo, @email, @senha)";
             Banco conexaoBD = new Banco();
             MySqlConnection con = conexaoBD.ObterConexao();
             MySqlCommand cmd = new MySqlCommand(comando, con);
 
-            cmd.Parameters.AddWithValue("@nome_completo", Nome_completo);
+            cmd.Parameters.AddWithValue("@nome_completo", NomeCompleto);
             cmd.Parameters.AddWithValue("@email", Email);
-            // obter o hash da senha:
-            string hassenha = EasyEncryption.SHA.ComputeSHA256Hash(Senha);
-            cmd.Parameters.AddWithValue("@senha", senhahash);
+            // Obter o HASH da senha:
+            string hashsenha = EasyEncryption.SHA.ComputeSHA256Hash(Senha);
+            cmd.Parameters.AddWithValue("@senha", hashsenha);
             // Obs.: Certifique-se de utilizar alguma método para obter o hash da senha antes de cadastrar!
             cmd.Prepare();
             // O trecho abaixo irá retornar true caso o cadastro dê certo:
@@ -105,117 +97,73 @@ namespace BakerCommerce.Model
                 return false;
             }
         }
-             
-            
-       public  bool Apagar()
+
+        public bool Apagar()
         {
             string comando = "DELETE FROM usuarios WHERE id = @id";
-
             Banco conexaoBD = new Banco();
-
             MySqlConnection con = conexaoBD.ObterConexao();
-
             MySqlCommand cmd = new MySqlCommand(comando, con);
 
-            cmd.Parameters.AddWithValue("@id", Id );
+            cmd.Parameters.AddWithValue("@id", Id);
 
             cmd.Prepare();
-
             try
-
             {
-
                 if (cmd.ExecuteNonQuery() == 0)
-
                 {
-
                     conexaoBD.Desconectar(con);
-
                     return false;
-
                 }
-
                 else
-
                 {
-
                     conexaoBD.Desconectar(con);
-
                     return true;
-
                 }
-
             }
-
             catch
-
             {
-
                 conexaoBD.Desconectar(con);
-
                 return false;
-
             }
-
         }
 
         public bool Modificar()
         {
-            string comando = "UPDATE usuario SET  nome_completo= @nome_completo, " +
-            "email = @email, senha =@senha WHERE id =@id";
-
+            string comando = "UPDATE usuarios SET nome_completo = @nome_completo, " +
+                "email = @email, senha = @senha WHERE id = @id";
             Banco conexaoBD = new Banco();
-
             MySqlConnection con = conexaoBD.ObterConexao();
-
             MySqlCommand cmd = new MySqlCommand(comando, con);
-
-            cmd.Parameters.AddWithValue("@nome_completo", Nome_completo);
+            cmd.Parameters.AddWithValue("@nome_completo", NomeCompleto);
             cmd.Parameters.AddWithValue("@email", Email);
-            cmd.Parameters.AddWithValue("@senha", Senha);
+
+            string hashsenha = EasyEncryption.SHA.ComputeSHA256Hash(Senha);
+
+            cmd.Parameters.AddWithValue("@senha", hashsenha);
             cmd.Parameters.AddWithValue("@id", Id);
             cmd.Prepare();
-
-             string hashSenha = EasyEncryption.SHA.ComputeSHA256Hash(Senha);
-            cmd.Parameters.AddWithValue("senha", hashSenha);
-            cmd.Parameters.AddWithValue("id", hashSenha);
-
             try
-
             {
-
                 if (cmd.ExecuteNonQuery() == 0)
-
                 {
-
                     conexaoBD.Desconectar(con);
-
                     return false;
-
                 }
-
                 else
-
                 {
-
                     conexaoBD.Desconectar(con);
-
                     return true;
-
                 }
-
             }
-
             catch
-
             {
-
                 conexaoBD.Desconectar(con);
-
                 return false;
-
             }
-        }
 
+        }
     }
+
 }
+
