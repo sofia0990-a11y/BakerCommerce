@@ -33,12 +33,91 @@ namespace BakerCommerce.Model
             return tabela;
         }
 
+        public DataTable BuscarPorFicha()
+        {
+            string comando = "SELECT * FROM view_ficha  WHERE ficha =@id_ficha";
+            Banco conexaoBD = new Banco();
+            MySqlConnection con = conexaoBD.ObterConexao();
+            MySqlCommand cmd = new MySqlCommand(comando, con);
+            cmd.Parameters.AddWithValue("@idFicha", IdFicha);
+            cmd.Prepare();
+            DataTable tabela = new DataTable();
+            tabela.Load(cmd.ExecuteReader());
+            conexaoBD.Desconectar(con);
+            return tabela;
+        }
+
+
 
 
         // Cadastrar ( INSERT na ordens_comandas)
         public bool Cadastrar()
 
+
+
+          public bool EncerrarComanda()
+
         {
+
+            string comando = "UPDATE ordens_comandas SET  situacao= 0" +
+                "WHERE id_ficha = @id_ficha AND situacao= 1";
+
+            Banco conexaoBD = new Banco();
+
+            MySqlConnection con = conexaoBD.ObterConexao();
+
+            MySqlCommand cmd = new MySqlCommand(comando, con);
+
+            cmd.Parameters.AddWithValue("@id_ficha", IdFicha);
+
+            cmd.Parameters.AddWithValue("@id_produto", IdProduto);
+
+            cmd.Parameters.AddWithValue("@id_quantidade", IdQuantidade);
+
+            cmd.Parameters.AddWithValue("@id_resp", IdResp);
+
+            cmd.Prepare();
+
+            try
+
+            {
+
+                if (cmd.ExecuteNonQuery() == 0)
+
+                {
+
+                    conexaoBD.Desconectar(con);
+
+                    return false;
+
+                }
+
+                else
+
+                {
+
+                    conexaoBD.Desconectar(con);
+
+                    return true;
+
+                }
+
+            }
+
+            catch
+
+            {
+
+                conexaoBD.Desconectar(con);
+
+                return false;
+
+            }
+
+
+
+
+            {
 
             string comando = "INSERT INTO orden_comandas (id_ficha, id_produto, id_quantidade, id_resp) VALUES " +
 
@@ -95,6 +174,8 @@ namespace BakerCommerce.Model
                 return false;
 
             }
+
+         
 
         }
     }
